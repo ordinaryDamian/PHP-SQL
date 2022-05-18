@@ -47,10 +47,10 @@ echo "<td>" . $row['task'] . "</td>";
 echo "<td>" . $row['date'] . "</td>";
 echo "<td>     <form action='update.php' method='post'>
 <input type='text' name='changed'>
-<input type='submit'>
+<button type='submit' value='" .$ID. "'>Zmeniť</button>
 </form></td>";
 echo "<td><form id='" .$ID. "' action='delete.php' method='POST'>
-<button type='submit' name='delete' value='" .$ID. "'> delete </button>
+<button type='submit' name='delete' value='" .$ID. "'>Vymazať</button>
 </form></td>";
 echo "</tr>";
 }
