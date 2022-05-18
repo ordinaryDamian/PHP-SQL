@@ -14,6 +14,7 @@ session_start();
 <body>
     
 <div class='messenger'>
+    <h1>TO-DO LIST</h1>
     <section>
 <?php
 
@@ -44,8 +45,9 @@ $ID = $row['ID'];
 echo "<tr>";
 echo "<td>" . $row['task'] . "</td>";
 echo "<td>" . $row['date'] . "</td>";
-echo "<td><form id='" .$ID. "' action='checked.php' method='POST'>
-<button type='submit' name='update' value='" .$ID. "'> update </button>
+echo "<td>     <form action='update.php' method='post'>
+<input type='text' name='changed'>
+<input type='submit'>
 </form></td>";
 echo "<td><form id='" .$ID. "' action='delete.php' method='POST'>
 <button type='submit' name='delete' value='" .$ID. "'> delete </button>
@@ -68,5 +70,49 @@ mysqli_close($con);
 </form>
  </section>
 </div>
+<style>
+    .messenger{
+        position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+table th,
+table td {
+    padding: 12px 15px;
+}
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+</style>
 </body>
 </html>

@@ -16,23 +16,14 @@ $cas = date('d.m. H:i' , time());
 
 
 $connection = mysqli_connect("localhost", "root", "","test");
-if($connection){
-    echo "sme pripojený";
-}else{
-    echo "chyba";
-}
-
 $sql = "INSERT INTO todo (task, date)
 VALUES ('{$sprava1}', '{$cas}')";
  
 
 if ($connection->query($sql) === TRUE) {
     echo "<br> New record created successfully";
-    $_SESSION["send"] = true;
-  } else {
-    echo "Error: " . $sql . "<br>" . $connection->error;
-  }
-  header("Location: ./root_messenger.php");
+  } 
+header("Location: ./root_messenger.php");
 ?>
 </body>
 </html>
