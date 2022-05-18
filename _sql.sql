@@ -1,22 +1,19 @@
 START TRANSACTION;
 
 -- zmazanie databazy ak existuje
-DROP DATABASE IF EXISTS sport;
+DROP DATABASE IF EXISTS TODO;
 
 -- vytvorenie databazy
-CREATE DATABASE sport;
+CREATE DATABASE TODO;
 
 -- prepnutie sa do databazy
-USE sport;
+USE TODO;
 
 -- vytvorenie tabulky
-CREATE TABLE `player` (
+CREATE TABLE `prace` (
 	`id` int(6) NOT NULL AUTO_INCREMENT,
 	`name` varchar(30) NOT NULL,
-	`surname` varchar(30) NOT NULL,
-	`age` int(6) NOT NULL,
-	`nick` varchar(30),
-	`gender` ENUM('M', 'F'),
+	`status` ENUM('Pripravujem', 'Vykonavam', 'Vybavene'),
 	PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4;
 
