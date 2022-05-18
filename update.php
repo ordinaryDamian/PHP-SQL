@@ -8,59 +8,26 @@
 </head>
 <body>
     <?php
-$status1 = filter_input(INPUT_POST, 'status1', FILTER_SANITIZE_STRING);
-$cas = date('d.m H:i' , time());
-$id = $_POST["id"];
-$connection = mysqli_connect("localhost", "root", "","test");
-if($connection){
-    echo "sme pripojený";
-}else{
-    echo "chyba";
+$obsah = $_POST["changed"];
+$identifikator = $_POST["idecko"];
+echo $obsah;
+echo $identifikator;
+
+$conn = new mysqli("localhost", "root", "", "test");
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
 
+$sql = "UPDATE todo SET task='" .$obsah. "' WHERE id=" .$identifikator;
 
-if($status1 == "prijate"){
-  $status = 
-  '<option value="prijate"selected>Prijaté</option>
-    <option value="proces">V procese opravy</option>
-    <option value="opravene">Opravené</option>';
-  $sql = "UPDATE lezitranz_db
-  SET status = '{$status}', opravene = ''
-  WHERE ID = $id;";
-  if ($connection->query($sql) === TRUE) {
-    echo "<br> New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $connection->error;
-  }
-}elseif($status1 == "proces"){ 
-
-     $status = 
- '<option value="prijate">Prijaté</option>
-   <option value="proces"selected>V procese opravy</option>
-   <option value="opravene">Opravené</option>';
- $sql = "UPDATE lezitranz_db
- SET status = '{$status}', opravene = ''
- WHERE ID = $id;";
- if ($connection->query($sql) === TRUE) {
-   echo "<br> New record created successfully";
- } else {
-   echo "Error: " . $sql . "<br>" . $connection->error;
- }
-}elseif($status1 == "opravene"){
-  $status = 
-  ' <option value="prijate">Prijaté</option>
-    <option value="proces">V procese opravy</option>
-    <option value="opravene"selected>Opravené</option>';
-  $sql = "UPDATE lezitranz_db
-  SET status = '{$status}', opravene = '{$cas}'
-  WHERE ID = $id;";
-  if ($connection->query($sql) === TRUE) {
-    echo "<br> New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $connection->error;
-  }
+if ($conn->query($sql) === TRUE) {
+  echo "Record updated successfully";
+} else {
+  echo "Error updating record: " . $conn->error;
 }
 
+$conn->close();
 
 header("Location: ./root_messenger.php");
 ?>

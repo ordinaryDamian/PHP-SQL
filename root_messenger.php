@@ -15,7 +15,7 @@ session_start();
     
 <div class='messenger'>
     <h1>TO-DO LIST</h1>
-    <section>
+    <section class="tabulka">
 <?php
 
 
@@ -31,10 +31,10 @@ $result = mysqli_query($con,"SELECT * FROM todo ORDER BY ID DESC");
 echo "<table border='1'>
 <thead>
 <tr>
-<th>Úloha</th>
+<th class='task'>Úloha</th>
 <th>Dátum</th>
-<th>Upraviť</th>
-<th>Vymazať</th>
+<th class='edit'>Upraviť</th>
+<th class='remove'>Vymazať</th>
 </tr>
 </thead>
 <tbody>";
@@ -47,7 +47,7 @@ echo "<td>" . $row['task'] . "</td>";
 echo "<td>" . $row['date'] . "</td>";
 echo "<td>     <form action='update.php' method='post'>
 <input type='text' name='changed'>
-<button type='submit' value='" .$ID. "'>Zmeniť</button>
+<button type='submit' name='idecko' value='" .$ID. "'>Zmeniť</button>
 </form></td>";
 echo "<td><form id='" .$ID. "' action='delete.php' method='POST'>
 <button type='submit' name='delete' value='" .$ID. "'>Vymazať</button>
@@ -80,6 +80,7 @@ mysqli_close($con);
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 90%;
     }
     table {
     border-collapse: collapse;
@@ -112,6 +113,26 @@ table tbody tr:last-of-type {
 table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+table{
+width: 100%;
+}
+.tabulka{
+    width: 100%;
+}
+tr > td:nth-child(2),
+tr > td:nth-child(3),
+tr > td:nth-child(4) {
+  white-space: nowrap;
+}
+.edit{
+    width: 6rem;
+}
+.remove{
+    width: 2rem;
+}
+tr > td:nth-child(2){
+    width: 2rem;
 }
 </style>
 </body>
