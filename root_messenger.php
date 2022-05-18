@@ -45,10 +45,10 @@ echo "<tr>";
 echo "<td>" . $row['task'] . "</td>";
 echo "<td>" . $row['date'] . "</td>";
 echo "<td><form id='" .$ID. "' action='checked.php' method='POST'>
-<input type='submit' name='id' value='$ID'>
+<button type='submit' name='update' value='" .$ID. "'> update </button>
 </form></td>";
-echo "<td><form id='" .$ID. "' action='checked.php' method='POST'>
-<input type='submit' name='id' value='$ID'>
+echo "<td><form id='" .$ID. "' action='delete.php' method='POST'>
+<button type='submit' name='delete' value='" .$ID. "'> delete </button>
 </form></td>";
 echo "</tr>";
 }
@@ -62,7 +62,7 @@ mysqli_close($con);
  <section>
  <form action="c_message.php" method="post">
 <div class="sprava">
-<input type="text" name="message" class="message" placeholder="Popis závady">
+<input type="text" name="message" class="message" placeholder="Úlohu ktorú treba spraviť">
 <button class="odoslat" type="submit">ODOSLAŤ</button>
 </div>
 </form>

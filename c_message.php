@@ -12,13 +12,7 @@ session_start();
 <body>
     <?php
 $sprava1 = $_POST["message"];
-$name = strtoupper($meno);
 $cas = date('d.m. H:i' , time());
-$oprava = " ";
-$status = 
-'<option value="prijate" name="stav">Prijaté</option>
-  <option value="proces" name="stav">V procese opravy</option>
-  <option value="opravene" name="stav">Opravené</option>';
 
 
 $connection = mysqli_connect("localhost", "root", "","test");
@@ -38,6 +32,7 @@ if ($connection->query($sql) === TRUE) {
   } else {
     echo "Error: " . $sql . "<br>" . $connection->error;
   }
+  header("Location: ./root_messenger.php");
 ?>
 </body>
 </html>

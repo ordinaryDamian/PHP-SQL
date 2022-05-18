@@ -64,83 +64,11 @@ if($_SESSION["send"] == true){
 <form action="c_message.php" method="post">
 <div class="sprava">
 <input type="text" class="message" placeholder="<?php echo $meno; ?>" readonly>
-<input type="text" name="message" class="message" placeholder="Popis závady">
+<input type="text" name="message" class="message" placeholder="úloha ktoru treba spraviť">
 <button class="odoslat" type="submit">ODOSLAŤ</button>
 </div>
 </form>
 </div>
 </section>
-<section id="show" class="messenger"> 
-<?php
-
-$con = mysqli_connect("localhost", "root", "","test");
-// Check connection
-if (mysqli_connect_error())
-{
-echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-$result = mysqli_query($con,"SELECT * FROM lezitranz_db ORDER BY ID DESC");
-echo "<table border='1'>
-<thead>
-<tr>
-<th>SPZ</th>
-<th>Popis chyby</th>
-<th>Dátum a čas</th>
-<th>Stav opravy</th>
-<th>Dátum opravy</th>
-</tr>
-</thead>
-<tbody>";
-while($row = mysqli_fetch_array($result))
-{
-$spz = $row['spz'];
-if($spz == $meno){
-echo "<tr>";
-echo "<td>" . $row['spz'] . "</td>";
-echo "<td>" . $row['porucha'] . "</td>";
-echo "<td>" . $row['datum'] . "</td>";
-echo "<td>
-<select disabled name='status1' id='stav' onchange='this.form.submit()'>" . $row['status'] . "</select>
-</td>";
-echo "<td>" . $row['opravene'] . "</td>";
-echo "</tr>";
-} 
-}
-echo "</tbody>
-</table>";
-mysqli_close($con);
-
-
-
-?>
-</section>
-<script>
-      let choose = document.getElementById("choose");
-      let send = document.getElementById("send");
-      let show = document.getElementById("show");
-      let xxx = document.getElementById("new");
-      let old = document.getElementById("old");
-      let reset = document.getElementById("reset");
-      let spet = document.getElementById("spet");
-      xxx.onclick = function () {
-        choose.classList.toggle("close");
-        send.classList.toggle("open");
-        spet.classList.toggle("open");
-      };
-      old.onclick = function () {
-        choose.classList.toggle("close");
-        show.classList.toggle("open");
-        spet.classList.toggle("open");
-      };
-      reset.onclick = function () {
-        choose.classList.remove("close");
-        send.classList.remove('open');
-        show.classList.remove('open');
-        spet.classList.remove('open');
-      };
-    </script>
-       </div>
-    </section>
   </body>
 </html>
