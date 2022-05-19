@@ -30,7 +30,7 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 
-header("Location: ./root_messenger.php");
+header("Location: ./todo.php");
 ?>
 </body>
 </html>

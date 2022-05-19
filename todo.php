@@ -7,20 +7,41 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messenger</title>
+    <title>TODO</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style/root.css" />
     <link rel="icon" href="images/truck_icon.png" />
 </head>
 <body>
     
 <div class='messenger'>
+    <section class="new-task">
     <h1>TO-DO LIST</h1>
+
+<div class="plus">
+
+ <form action="c_message.php" method="post">
+<div class="sprava">
+<input type="text" name="message" class="message" placeholder="Úlohu ktorú treba spraviť">
+<button class="odoslat" type="submit">ODOSLAŤ</button>
+</div>
+</form>
+
+<img src="stiahnut.png" alt="">
+
+</div>
+
+ </section>
     <section class="tabulka">
 <?php
 
 
 $con = mysqli_connect("localhost", "root", "","test");
-// Check connection
+
 if (mysqli_connect_error())
 {
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -60,14 +81,6 @@ mysqli_close($con);
 
 
  ?>
- </section>
- <section>
- <form action="c_message.php" method="post">
-<div class="sprava">
-<input type="text" name="message" class="message" placeholder="Úlohu ktorú treba spraviť">
-<button class="odoslat" type="submit">ODOSLAŤ</button>
-</div>
-</form>
  </section>
 </div>
 <style>
@@ -134,6 +147,53 @@ tr > td:nth-child(4) {
 tr > td:nth-child(2){
     width: 2rem;
 }
+.new-task{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+    width: 100%;
+    padding: 0rem 4rem;
+}
+.plus{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+img{
+    height: 3rem;
+    cursor: pointer;
+}
+
+button{
+
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  border-radius: 3px;
+
+}
+
+
 </style>
+<script>
+
+
+
+$(function () {
+    $(".sprava").hide();
+$("img").click(function (e) { 
+    e.preventDefault();
+
+    $(".sprava").slideToggle(500);
+    
+});
+
+});
+
+
+</script>
 </body>
 </html>

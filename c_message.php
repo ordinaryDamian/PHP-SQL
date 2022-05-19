@@ -23,7 +23,7 @@ VALUES ('{$sprava1}', '{$cas}')";
 if ($connection->query($sql) === TRUE) {
     echo "<br> New record created successfully";
   } 
-header("Location: ./root_messenger.php");
+header("Location: ./todo.php");
 ?>
 </body>
 </html>
