@@ -155,7 +155,7 @@ tr > td:nth-child(2){
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10rem;
+    gap: 100px;
     width: 100%;
     padding: 0rem 4rem;
 }
@@ -167,6 +167,9 @@ tr > td:nth-child(2){
 img{
     height: 3rem;
     cursor: pointer;
+}
+h1{
+    margin-right: 10rem;
 }
 
 button{
@@ -191,7 +194,7 @@ $(function () {
 $("img").click(function (e) { 
     e.preventDefault();
 
-    $(".sprava").slideToggle(500);
+    $(".sprava").slideToggle(50);
     
 });
 
