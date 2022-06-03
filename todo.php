@@ -67,7 +67,7 @@ echo "<tr>";
 echo "<td>" . $row['task'] . "</td>";
 echo "<td>" . $row['date'] . "</td>";
 echo "<td>     <form action='update.php' method='post'>
-<input type='text' name='changed'>
+<input type='text' placeholder=" .$row['task']. " name='changed'>
 <button type='submit' name='idecko' value='" .$ID. "'>Zmeniť</button>
 </form></td>";
 echo "<td><form id='" .$ID. "' action='delete.php' method='POST'>
@@ -194,7 +194,7 @@ $(function () {
 $("img").click(function (e) { 
     e.preventDefault();
 
-    $(".sprava").slideToggle(50);
+    $(".sprava").slideToggle(300);
     
 });
 
